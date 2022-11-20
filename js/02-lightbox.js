@@ -8,7 +8,6 @@ const gallery = document.querySelector(".gallery");
 const galleryList = createGalleryCard(galleryItems);
 gallery.insertAdjacentHTML("beforeend", galleryList);
 
-gallery.addEventListener("click", onCartClick);
 /*
 {
   <a class="gallery__item" href="large-image.jpg">
@@ -32,13 +31,7 @@ function createGalleryCard(cardItems) {
     .join("");
 }
 
-function onCartClick(event) {
-  event.preventDefault();
-  if (!event.target.classList.contains("gallery__image")) {
-    return;
-  }
-  const lightbox = new SimpleLightbox(".gallery a");
-
-  //   lightbox.show();
-  //   gallery.on("show.simplelightbox", function () {});
-}
+new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+});
